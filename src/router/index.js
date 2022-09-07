@@ -1,16 +1,8 @@
-/*
- * @Author: DJH
- * @Date: 2022-08-22 18:00:34
- * @LastEditors: Bertram
- * @LastEditTime: 2022-09-06 22:22:15
- * @Description: file content
- * @FilePath: \testcli\src\router\index.js
- */
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Films from '../views/Films'
 import Cinemas from '../views/Cinemas'
-// import Center from '../views/Center'
 import Nowplaying from '../views/films/Nowplaying'
 import Comingsoon from '../views/films/Comingsoon'
 import Search from '../views/Search'

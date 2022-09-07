@@ -1,11 +1,8 @@
 /*
- * @Author: DJH
- * @Date: 2022-08-22 18:00:34
- * @LastEditors: DJH
- * @LastEditTime: 2022-08-26 12:25:41
- * @Description: file content
- * @FilePath: \testcli\.eslintrc.js
+ * @Author: Bertram
+ * @LastEditors: Bertram
  */
+
 module.exports = {
   root: true,
   env: {
