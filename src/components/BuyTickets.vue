@@ -10,12 +10,12 @@
 </template>
 <script>
 export default {
-    props: {
-        data: {
-            type: String,
-            default: '购票'
-        }
+  props: {
+    data: {
+      type: String,
+      default: '购票'
     }
+  }
 }
 </script>
 <style lang="scss" scoped>

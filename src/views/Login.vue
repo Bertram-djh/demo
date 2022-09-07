@@ -14,15 +14,15 @@
     </div>
 </template>
 <script>
-    export default {
-        methods: {
-            handleClick () {
-                setTimeout(() => {
-                    localStorage.setItem('token','djh')
-                    this.$router.push(this.route.query.redirect)
-                    // 根据路由元信息跳转到之前想访问的页面
-                },100)
-            }
-        }
+export default {
+  methods: {
+    handleClick () {
+      setTimeout(() => {
+        localStorage.setItem('token', 'djh')
+        this.$router.push(this.route.query.redirect)
+        // 根据路由元信息跳转到之前想访问的页面
+      }, 100)
     }
+  }
+}
 </script>

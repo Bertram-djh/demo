@@ -73,7 +73,6 @@
                     暂无电影剧照
                 </div>
 
-
             </div>
         </div>
     </main>
@@ -89,71 +88,70 @@ import detailHeader from '@/components/detail/DetailHeader'
 import Vue from 'vue'
 import { ImagePreview } from 'vant'
 
-
-Vue.directive('title', { //注册指令，封装dom操作
-    inserted(el, binding) {
+Vue.directive('title', { // 注册指令，封装dom操作
+  inserted (el, binding) {
+    el.style.display = 'none'
+    window.onscroll = () => {
+      if ((document.documentElement.scrollTop || document.body.scrollTop) > binding.value) {
+        el.style.display = 'block'
+      } else {
         el.style.display = 'none'
-        window.onscroll = () => {
-            if ((document.documentElement.scrollTop || document.body.scrollTop) > binding.value) {
-                el.style.display = 'block'
-            } else {
-                el.style.display = 'none'
-            }
-        }
-    },
-    unbind() {
-        window.onscroll = null
+      }
     }
+  },
+  unbind () {
+    window.onscroll = null
+  }
 })
 
 export default {
-    components: {
-        detailSwiper,
-        detailItem,
-        detailHeader
-    },
-    mixins: [obj],
-    data() {
-        return {
-            filmInfo: null,
-            isShow: false
-        }
-    },
-    methods: {
-        filmTime(time) { // 转换时间戳
-            return moment(time).format('YYYY-MM-DD')
-        },
-        handleChange() { // 剧情下面的箭头切换
-            this.isShow = !this.isShow
-        },
-        handleBack() { // 返回上一个页面
-            this.$router.back()
-        },
-        handlePreview (index) {
-            if (!this.filmInfo.photos) return
-            // console.log(this.filmInfo.photos)
-            ImagePreview ({
-                images:this.filmInfo.photos,
-                // ['https://img01.yzcdn.cn/vant/apple-1.jpg'],
-                startPosition: index,
-                closeable: true,
-                closeIconPosition: 'top-left'
-            })
-        }
-    },
-    mounted() {
-        // console.log('created', this.$route.params.myid)
-        // this.$route 当前匹配的路由
-        //axios 利用id 发送到详情接口，获取详情数据，布局页面
-        http({
-            url: `https://m.maizuo.com/gateway?filmId=${this.$route.params.myid}&k=2035484`,
-            headers: {
-                "X-Host": "mall.film-ticket.film.info"
-            }
-        }).then(res => {
-            this.filmInfo = res.data.data.film
-        })
+  components: {
+    detailSwiper,
+    detailItem,
+    detailHeader
+  },
+  mixins: [obj],
+  data () {
+    return {
+      filmInfo: null,
+      isShow: false
     }
+  },
+  methods: {
+    filmTime (time) { // 转换时间戳
+      return moment(time).format('YYYY-MM-DD')
+    },
+    handleChange () { // 剧情下面的箭头切换
+      this.isShow = !this.isShow
+    },
+    handleBack () { // 返回上一个页面
+      this.$router.back()
+    },
+    handlePreview (index) {
+      if (!this.filmInfo.photos) return
+      // console.log(this.filmInfo.photos)
+      ImagePreview({
+        images: this.filmInfo.photos,
+        // ['https://img01.yzcdn.cn/vant/apple-1.jpg'],
+        startPosition: index,
+        closeable: true,
+        closeIconPosition: 'top-left'
+      })
+    }
+  },
+  mounted () {
+    // console.log('created', this.$route.params.myid)
+    // this.$route 当前匹配的路由
+    // axios 利用id 发送到详情接口，获取详情数据，布局页面
+    http({
+      url: `https://m.maizuo.com/gateway?filmId=${this.$route.params.myid}&k=2035484`,
+      headers: {
+        'X-Host': 'mall.film-ticket.film.info'
+      }
+    }).then(res => {
+      this.filmInfo = res.data.data.film
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -221,7 +219,6 @@ export default {
                 // display: inline-block;
             }
         }
-
 
         .film-grade {
             width: calc(100% - 250px);

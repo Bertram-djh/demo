@@ -22,7 +22,7 @@ export default {
     tabBar,
     buyBar
   },
-  data() {
+  data () {
     return {
 
     }

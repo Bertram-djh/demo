@@ -28,28 +28,28 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
-    changeCity(state, cityName) {
+    changeCity (state, cityName) {
       state.cityName = cityName
     },
-    changeCityId(state, cityId) {
+    changeCityId (state, cityId) {
       state.cityId = cityId
     },
-    changeCityCinemas(state, cinemasList) {
+    changeCityCinemas (state, cinemasList) {
       state.cityCinemas = cinemasList
     },
-    clearCityCinemas(state) {
+    clearCityCinemas (state) {
       state.cityCinemas = []
     },
-    show(state) {
+    show (state) {
       state.isShow = true
     },
-    hide(state) {
+    hide (state) {
       state.isShow = false
     }
   },
   // 异步请求后端数据
   actions: {
-    getCityCinemas(store, id) {
+    getCityCinemas (store, id) {
       return http({
         url: `gateway?cityId=${id}&ticketFlag=1&k=1846820`,
         headers: {

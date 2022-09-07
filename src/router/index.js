@@ -20,18 +20,14 @@ import Login from '../views/Login'
 import News from '@/views/News'
 import City from '@/views/City'
 
-
-
-
 Vue.use(VueRouter) // 注册路由插件，两个全局 router-view  router-link
-
 
 // 配置表
 const routes = [
   {
     path: '/films',
     component: Films,
-    //嵌套路由
+    // 嵌套路由
     children: [
       {
         path: '/films/nowplaying',
@@ -61,7 +57,7 @@ const routes = [
   },
   {
     name: 'nameDetail', // 命名路由
-    path: '/detail/:myid',  // 动态二级路由
+    path: '/detail/:myid', // 动态二级路由
     component: Detail
   },
   {
@@ -70,7 +66,7 @@ const routes = [
   },
   {
     path: '/center',
-    component: () => import('@/views/Center'), //路由懒加载
+    component: () => import('@/views/Center'), // 路由懒加载
     meta: {
       isRequired: true // 路由拦截判定
     }
@@ -84,7 +80,7 @@ const routes = [
   },
   {
     path: '/login',
-    component: Login,
+    component: Login
   },
   { // 重定向，默认地址条状到/films
     path: '/',
@@ -103,7 +99,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.isRequired) {
-
     if (localStorage.getItem('token')) {
       next()
     } else {

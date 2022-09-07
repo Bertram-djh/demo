@@ -14,12 +14,12 @@
 </template>
 <script>
 export default {
-    props: {
-        dataList: {
-            type: Array,
-            default: []
-        }
+  props: {
+    dataList: {
+      type: Array,
+      default: []
     }
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -31,52 +31,50 @@ import 'vant/lib/index.css'
 
 Vue.use(Vant)
 export default {
-    components: {
-        cinemasList
-    },
-    data() {
-        return {
-            // cinemasList: [],
-            height: '0px'
-        }
-    },
-    methods: {
-        changeCity() {
-            this.$router.push('/city')
-        },
-        searchCinemas() {
-            this.$router.push('/cinemas/search')
-        }
-    },
-    
-    
-    mounted() {
-        // console.log(this.$refs)
-        this.height = document.documentElement.clientHeight - this.$refs.vanbar.$el.offsetHeight - document.querySelector('footer').offsetHeight + 'px' // 动态计算影院区域高度，匹配better-scroll
-
-        if (this.$store.state.cityCinemas.length === 0) {
-            this.$store.dispatch('getCityCinemas', this.$store.state.cityId)
-                .then(() => {
-                    this.$nextTick(() => {
-                        // 节点上树后初始化better scroll
-                        new BetterScroll('.box', {
-                            scrollbar: {
-                                fade: true
-                            }
-                        })
-                    })
-                })
-        } else {
-            this.$nextTick(() => {
-                new BetterScroll('.box', {
-                    scrollbar: {
-                        fade: true
-                    }
-                })
-            })
-        }
-
+  components: {
+    cinemasList
+  },
+  data () {
+    return {
+      // cinemasList: [],
+      height: '0px'
     }
+  },
+  methods: {
+    changeCity () {
+      this.$router.push('/city')
+    },
+    searchCinemas () {
+      this.$router.push('/cinemas/search')
+    }
+  },
+
+  mounted () {
+    // console.log(this.$refs)
+    this.height = document.documentElement.clientHeight - this.$refs.vanbar.$el.offsetHeight - document.querySelector('footer').offsetHeight + 'px' // 动态计算影院区域高度，匹配better-scroll
+
+    if (this.$store.state.cityCinemas.length === 0) {
+      this.$store.dispatch('getCityCinemas', this.$store.state.cityId)
+        .then(() => {
+          this.$nextTick(() => {
+            // 节点上树后初始化better scroll
+            new BetterScroll('.box', {
+              scrollbar: {
+                fade: true
+              }
+            })
+          })
+        })
+    } else {
+      this.$nextTick(() => {
+        new BetterScroll('.box', {
+          scrollbar: {
+            fade: true
+          }
+        })
+      })
+    }
+  }
 }
 </script>
 

@@ -15,24 +15,24 @@
 import Swiper from 'swiper/swiper-bundle'
 import 'swiper/swiper-bundle.css'
 export default {
-    props: {
-        loop: {
-            type: Boolean,
-            default: false
-        }
-    },
-    mounted() {
-        new Swiper(".swipertest", {  //节点加载完毕后，初始化swiper
-            loop: this.loop,
-            pagination: {
-                el: '.swiper-pagination',
-            },
-            // autoplay: {
-            //     delay: 3000,
-            //     disableOnInteraction: false
-            // }
-        })
+  props: {
+    loop: {
+      type: Boolean,
+      default: false
     }
+  },
+  mounted () {
+    new Swiper('.swipertest', { // 节点加载完毕后，初始化swiper
+      loop: this.loop,
+      pagination: {
+        el: '.swiper-pagination'
+      }
+      // autoplay: {
+      //     delay: 3000,
+      //     disableOnInteraction: false
+      // }
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>

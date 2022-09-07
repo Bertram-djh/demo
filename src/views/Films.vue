@@ -14,26 +14,26 @@
     </div>
 </template>
 <script>
-    import filmSwiper from '@/components/films/FilmSwiper'
-    import swiperItem from '@/components/films/SwiperItem'
-    import filmHeader from '@/views/films/FilmHeader'
-    import axios from 'axios';
-    
-    export default {
-        components: {
-            filmSwiper,
-            swiperItem,
-            filmHeader
-        },
-        data () {
-            return {
-                datalist: []
-            }
-        },
-        mounted () {
-            this.datalist = ['/imgs/2.jpg','/imgs/3.jpg','/imgs/4.jpg']
-        }
+import filmSwiper from '@/components/films/FilmSwiper'
+import swiperItem from '@/components/films/SwiperItem'
+import filmHeader from '@/views/films/FilmHeader'
+import axios from 'axios'
+
+export default {
+  components: {
+    filmSwiper,
+    swiperItem,
+    filmHeader
+  },
+  data () {
+    return {
+      datalist: []
     }
+  },
+  mounted () {
+    this.datalist = ['/imgs/2.jpg', '/imgs/3.jpg', '/imgs/4.jpg']
+  }
+}
 </script>
 <style lang="scss" scoped>
     img {

@@ -40,69 +40,67 @@ import { List } from 'vant'
 Vue.use(List)
 
 export default {
-    components: {
-        buyTickets
-    },
-    data() {
-        return {
-            datalist: [],
-            listNum: 1,
-            total: 0,
-            loading: false,
-            finished: false,
-        }
-    },
-    methods: {
-        handleClick(id) {
-            //通过路径跳转
-            // this.$router.push(`/detail/${id}`)
-            //通过命名路由跳转
-            this.$router.push({
-                name: 'nameDetail',
-                params: {
-                    myid: id
-                }
-            })
-        },
-        getFilmActors(data) { // 获取演员表，返回字符串
-            if(!data.actors){
-                return '暂无主演'
-            } else {
-                return data.actors.map(res => res.name).join(' ')
-            }
-            
-        },
-        onLoad() {
-            // 判断列表长度和数据长度
-            if ((this.datalist.length == this.total) && !this.total == 0) {
-                this.finished = true
-                return
-            }
-            this.listNum++
-            http({
-                url: `gateway?cityId=${this.$store.state.cityId}&pageNum=${this.listNum}&pageSize=10&type=1&k=105672`,
-                headers: {
-                    "X-Host": "mall.film-ticket.film.list"
-                }
-            }).then(res => {
-                this.datalist = [...this.datalist, ...res.data.data.films]
-                this.loading = false
-
-            })
-        }
-    },
-    mounted() {
-        http({
-            url: `gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=1&k=105672`,
-            headers: {
-                "X-Host": "mall.film-ticket.film.list"
-            }
-        }).then(res => {
-            this.datalist = res.data.data.films
-            this.total = res.data.data.total
-            // console.log(this.total)
-        })
+  components: {
+    buyTickets
+  },
+  data () {
+    return {
+      datalist: [],
+      listNum: 1,
+      total: 0,
+      loading: false,
+      finished: false
     }
+  },
+  methods: {
+    handleClick (id) {
+      // 通过路径跳转
+      // this.$router.push(`/detail/${id}`)
+      // 通过命名路由跳转
+      this.$router.push({
+        name: 'nameDetail',
+        params: {
+          myid: id
+        }
+      })
+    },
+    getFilmActors (data) { // 获取演员表，返回字符串
+      if (!data.actors) {
+        return '暂无主演'
+      } else {
+        return data.actors.map(res => res.name).join(' ')
+      }
+    },
+    onLoad () {
+      // 判断列表长度和数据长度
+      if ((this.datalist.length == this.total) && !this.total == 0) {
+        this.finished = true
+        return
+      }
+      this.listNum++
+      http({
+        url: `gateway?cityId=${this.$store.state.cityId}&pageNum=${this.listNum}&pageSize=10&type=1&k=105672`,
+        headers: {
+          'X-Host': 'mall.film-ticket.film.list'
+        }
+      }).then(res => {
+        this.datalist = [...this.datalist, ...res.data.data.films]
+        this.loading = false
+      })
+    }
+  },
+  mounted () {
+    http({
+      url: `gateway?cityId=${this.$store.state.cityId}&pageNum=1&pageSize=10&type=1&k=105672`,
+      headers: {
+        'X-Host': 'mall.film-ticket.film.list'
+      }
+    }).then(res => {
+      this.datalist = res.data.data.films
+      this.total = res.data.data.total
+      // console.log(this.total)
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>
